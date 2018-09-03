@@ -10,7 +10,6 @@ package gymmanagement.modelos;
  * @author bruno
  */
 public class Funcionario {
-    
     private String login;
     private String senha;
     private Cargo cargo;

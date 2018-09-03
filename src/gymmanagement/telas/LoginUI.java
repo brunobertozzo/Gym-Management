@@ -5,6 +5,7 @@
  */
 package gymmanagement.telas;
 
+import gymmanagement.controladores.ControladorLogin;
 import javax.swing.JOptionPane;
 
 /**
@@ -141,6 +142,7 @@ public class LoginUI extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         
+//        ControladorLogin.logar(String login, String senha);
         MenuAdminUI adminUI = new MenuAdminUI();
         adminUI.setLocationRelativeTo(null);
         adminUI.setVisible(true);

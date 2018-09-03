@@ -12,7 +12,10 @@ import java.util.ArrayList;
  * @author bruno
  */
 public class Treino {
+    private static final long serialVersionUID = 1L;
+    
     private ArrayList<Exercicio> treino;
+    private String nome;
 
     public Treino(ArrayList<Exercicio> treino) {
         this.treino = treino;
@@ -25,6 +28,15 @@ public class Treino {
     public void setTreino(ArrayList<Exercicio> treino) {
         this.treino = treino;
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    
     
     
 }

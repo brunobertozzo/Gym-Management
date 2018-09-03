@@ -15,7 +15,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,7 +25,7 @@ import java.util.logging.Logger;
 public class PersistenciaDeDados {
     public static PersistenciaDeDados persistenciaDeDados;
     private HashMap<Integer, IObjectID> cache = new HashMap<>();
-    private final String fileName = "cache.batman";
+    private final String fileName = "dados.dso";
 	
     public PersistenciaDeDados() { 
        load();
@@ -44,7 +43,7 @@ public class PersistenciaDeDados {
         persist();
     }
 	
-    public Object get(UUID id) {
+    public Object get(Integer id) {
         return cache.get(id);
     }
 
@@ -107,7 +106,7 @@ public class PersistenciaDeDados {
         } catch (IOException ex) {
             Logger.getLogger(PersistenciaDeDados.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-			Logger.getLogger(PersistenciaDeDados.class.getName()).log(Level.SEVERE, null, ex);
-		}
+            Logger.getLogger(PersistenciaDeDados.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

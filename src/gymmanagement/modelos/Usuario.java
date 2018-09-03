@@ -11,8 +11,8 @@ import java.sql.Date;
  *
  * @author bruno
  */
-public abstract class Usuario
-{
+public abstract class Usuario {
+    private static final long serialVersionUID = 1L;
     private String nome;
     private Date dataDeNascimento;
     private String rg;

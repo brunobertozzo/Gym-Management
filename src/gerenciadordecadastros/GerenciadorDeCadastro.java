@@ -3,20 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gymmanagement.controladores;
+package gerenciadordecadastros;
 
 /**
  *
- * @author bruno
+ * @author bruno.bertozzo
  */
-public class ControladorLogin {
+public class GerenciadorDeCadastro {
 
-    public ControladorLogin() {
+    public GerenciadorDeCadastro() {
     }
-    
-    
-//    public boolean logar(String login, String senha )
-    
     
     
 }

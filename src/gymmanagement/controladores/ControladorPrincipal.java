@@ -5,7 +5,7 @@
  */
 package gymmanagement.controladores;
 
-import gymmanagement.Telas.LoginUI;
+import gymmanagement.telas.LoginUI;
 
 /**
  *
@@ -30,7 +30,7 @@ public class ControladorPrincipal {
     public void inicia() {
 		Cargo cargoAdmin = new Cargo("Administrador", 10000, true);
 		Funcionario admin = new Funcionario(
-				"Thiago",
+				"Cleiton",
 				123456789,
 				987654321,
 				"01/01/1981",
@@ -41,8 +41,8 @@ public class ControladorPrincipal {
 				cargoAdmin
 		);
 	
-		GerenciadorPersistencia.getInstance().put(cargoAdmin);
-		GerenciadorPersistencia.getInstance().put(admin);
+		PersistenciaDeDados.getInstance().put(cargoAdmin);
+		PersistenciaDeDados.getInstance().put(admin);
 		
         telaLogin.exibir();
     }
