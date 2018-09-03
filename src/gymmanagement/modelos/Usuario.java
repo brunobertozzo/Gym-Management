@@ -13,37 +13,67 @@ import java.sql.Date;
  */
 public abstract class Usuario
 {
-    String nome;
-    String sobrenome;
-    int idade; 
-    Date dataDeNascimento;
-    int rg;
-    int cpf;
-    int cep;
-    int telefone;    
-   
-    public Usuario(String nome, String sobrenome, int idade, 
-                    Date dataDeNascimento, int rg, int cpf){
+    private String nome;
+    private Date dataDeNascimento;
+    private String rg;
+    private String cpf;
+    private String cep;
+    private String telefone;    
+
+    public Usuario(String nome, Date dataDeNascimento, String rg, String cpf, String cep, String telefone) {
         this.nome = nome;
-        this.sobrenome = sobrenome;
-        this.idade = idade;
         this.dataDeNascimento = dataDeNascimento;
-        this.rg = rg; 
+        this.rg = rg;
+        this.cpf = cpf;
+        this.cep = cep;
+        this.telefone = telefone;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Date getDataDeNascimento() {
+        return dataDeNascimento;
+    }
+
+    public void setDataDeNascimento(Date dataDeNascimento) {
+        this.dataDeNascimento = dataDeNascimento;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
-    public String getNome(){ return nome + sobrenome; }
+    public String getCep() {
+        return cep;
+    }
 
-    public int getIdade(){ return idade; }
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
 
-    public Date getDataNascimento(){ return dataDeNascimento; }
+    public String getTelefone() {
+        return telefone;
+    }
 
-    public int getCep() { return cep;}
-
-    public int getTelefone() { return telefone;}
-    
-    public void setCep(int newCep){ cep = newCep; }
-
-    public void setTelefone(int telefone){ this.telefone = telefone; }
-
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
 }

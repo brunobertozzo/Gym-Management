@@ -10,5 +10,19 @@ package gymmanagement.modelos;
  * @author bruno
  */
 public class Exercicio {
+    private String name;
+
+    public Exercicio(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
     
 }

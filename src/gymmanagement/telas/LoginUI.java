@@ -141,7 +141,7 @@ public class LoginUI extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         
-        AdminUI adminUI = new AdminUI();
+        MenuAdminUI adminUI = new MenuAdminUI();
         adminUI.setLocationRelativeTo(null);
         adminUI.setVisible(true);
        

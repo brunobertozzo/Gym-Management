@@ -10,5 +10,23 @@ package gymmanagement.modelos;
  * @author bruno
  */
 public class Aluno {
+
+    private Treino treino;
+
+    public Aluno(Treino treino) {
+        this.treino = treino;
+    }
+
+    public Treino getTreino() {
+        return treino;
+    }
+
+    public void setTreino(Treino treino) {
+        this.treino = treino;
+    }
+    
+    
+    
+    
     
 }
