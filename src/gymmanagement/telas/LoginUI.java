@@ -22,6 +22,7 @@ public class LoginUI extends javax.swing.JFrame {
     }
     
     public void mostrar() {
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
     

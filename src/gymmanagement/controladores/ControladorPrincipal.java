@@ -32,13 +32,13 @@ public class ControladorPrincipal {
         //Cargos e funcionarios hard-coded
         //admin hard-code
         Cargo adminPadrao = new Cargo("Administrador", 7000, true);
-        Funcionario admin = new Funcionario("Ademir", "25/12/1990", "1234123",
-				"99888778", "Av. Madre Benvenuta", "984441000",
+        Funcionario admin = new Funcionario("Ademir",  "083.192.239-70", "99888778",
+                                "25/12/1990", "984441000", "Av. Madre Benvenuta", 
 				"admin", "admin", adminPadrao);
         //funcionario hard-code
         Cargo treinadorPadrao = new Cargo("Treinador", 4500, false);
-        Funcionario treinador = new Funcionario("Treinador", "25/12/1990", "1234124",
-				"99888779", "Av. Madre Benvenuta", "984441001",
+        Funcionario treinador = new Funcionario("Funcionario normal",  "08319223970", "99888778",
+                                "25/12/1990", "984441000", "Av. Madre Benvenuta",
 				"func", "func", treinadorPadrao);
                                 
         PersistenciaDeDados.getInstance().put(adminPadrao);

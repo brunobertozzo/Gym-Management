@@ -7,6 +7,7 @@ package gymmanagement.telas;
 
 import gymmanagement.controladores.ControladorAluno;
 import gymmanagement.controladores.ControladorFuncionario;
+import gymmanagement.controladores.ControladorLogin;
 
 /**
  *
@@ -22,6 +23,7 @@ public class MenuAdminUI extends javax.swing.JFrame {
     }
     
     public void mostrar() {
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
 
@@ -147,10 +149,8 @@ public class MenuAdminUI extends javax.swing.JFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
        
-        LoginUI loginUI = new LoginUI();
-        loginUI.setLocationRelativeTo(null);
-        loginUI.setVisible(true);
-       
+        ControladorLogin.getInstance().mostrar();
+        
         this.dispose();
         
        

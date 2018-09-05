@@ -64,15 +64,15 @@ public class GerenciadorDeCadastro {
         }
     }
 	
-    public Aluno cadastraAluno(String nome,String cpf,String rg,String dataNascimento,
-                            String telefone,String endereco
-    ) throws Exception {
-        validaNome(nome);
-        validaCpf(cpf);
-        validaRg(rg);
-        validaDataNascimento(dataNascimento);
-        validaTelefone(telefone);
-        validaEndereco(endereco);
+    public Aluno cadastraAluno(String nome, String cpf, String rg, String dataNascimento,
+                            String telefone, String endereco)
+            throws Exception {
+            validaNome(nome);
+            validaCpf(cpf);
+            validaRg(rg);
+            validaDataNascimento(dataNascimento);
+            validaTelefone(telefone);
+            validaEndereco(endereco);
 
         Aluno aluno = new Aluno(nome, cpf, rg, dataNascimento, telefone, endereco);
 
@@ -124,7 +124,7 @@ public class GerenciadorDeCadastro {
     }
 	
     public void validaCpf(String cpf) throws Exception {
-        if (cpf.length() == 11) {
+        if (cpf.length() == 14) {
             for (int i = 0; i < cpf.length(); i++) {
                 char charAnalisado = cpf.charAt(i);
                 if (Character.isLetter(charAnalisado) || Character.isSpace(charAnalisado)) {
@@ -150,7 +150,7 @@ public class GerenciadorDeCadastro {
     }
 	
     public void validaDataNascimento(String dataNascimento) throws Exception {
-        if (dataNascimento.length() == 8) {
+        if (dataNascimento.length() == 10) {
             for (int i = 0; i < dataNascimento.length(); i++) {
                 char charAnalisado = dataNascimento.charAt(i);
                 if (Character.isLetter(charAnalisado) || Character.isSpace(charAnalisado)) {

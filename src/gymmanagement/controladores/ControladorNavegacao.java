@@ -30,10 +30,12 @@ public class ControladorNavegacao {
     }
 	
     public void mostrarMenuAdmin() {
+        this.menuAdminUI.setLocationRelativeTo(null);
         this.menuAdminUI.mostrar();
     }
     
     public void mostrarMenuComum() {
+        this.menuFuncionarioUI.setLocationRelativeTo(null);
         this.menuFuncionarioUI.mostrar();
     }
 

@@ -23,8 +23,8 @@ public abstract class Usuario implements Serializable, IObjectID {
     private String endereco;
     private String telefone;    
 
-    public Usuario(String nome, String dataDeNascimento, String rg, String cpf, 
-                    String endereco, String telefone) {
+    public Usuario(String nome, String cpf, String rg, String dataDeNascimento,   
+                    String telefone, String endereco) {
         ControladorPrincipal.getInstance().contadorEntidades++;
         this.id = ControladorPrincipal.getInstance().contadorEntidades;
         
