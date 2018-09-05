@@ -23,12 +23,12 @@ public class AutenticacaoDeUsuarios {
         return autenticacaoDeUsuarios;
     }
 	
-	public Funcionario autentica(String login, String senha) throws Exception {
-            for(Funcionario funcionario : PersistenciaDeDados.getInstance().getFuncionarios()) {
-                if(funcionario.getLogin().equals(login) && funcionario.getSenha().equals(senha)) {
-                    return funcionario;
-                }
+    public Funcionario autentica(String login, String senha) throws Exception {
+        for(Funcionario funcionario : PersistenciaDeDados.getInstance().getListaFuncionarios()) {
+            if(funcionario.getLogin().equals(login) && funcionario.getSenha().equals(senha)) {
+                return funcionario;
             }
-            throw new FalhaNaAutenticacaoException();
-	}
+        }
+        throw new FalhaNaAutenticacaoException();
+    }
 }

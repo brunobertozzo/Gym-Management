@@ -20,7 +20,8 @@ public class Treino implements Serializable, IObjectID {
     private ArrayList<Exercicio> treino;
     private String nome;
 
-    public Treino(ArrayList<Exercicio> treino) {
+    public Treino(String nome, ArrayList<Exercicio> treino) {
+        this.nome = nome;
         this.treino = treino;
     }
 

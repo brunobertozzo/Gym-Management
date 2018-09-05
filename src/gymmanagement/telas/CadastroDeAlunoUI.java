@@ -5,6 +5,9 @@
  */
 package gymmanagement.telas;
 
+import gymmanagement.controladores.ControladorAluno;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author bruno
@@ -20,6 +23,15 @@ public class CadastroDeAlunoUI extends javax.swing.JFrame {
     
     public void mostrar() {
         this.setVisible(true);
+    }
+    
+    public void exibeErro(String mensagem) {
+        JOptionPane.showMessageDialog(
+                null,
+                mensagem,
+                "Erro",
+                JOptionPane.PLAIN_MESSAGE
+        );
     }
 
     /**
@@ -38,14 +50,14 @@ public class CadastroDeAlunoUI extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
+        txtCPF = new javax.swing.JTextField();
+        txtRG = new javax.swing.JTextField();
+        txtData = new javax.swing.JTextField();
+        txtTelefone = new javax.swing.JTextField();
+        txtEndereco = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnEnviar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -65,7 +77,12 @@ public class CadastroDeAlunoUI extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Cadastro de Aluno");
 
-        jButton1.setText("Enviar");
+        btnEnviar.setText("Enviar");
+        btnEnviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviarActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -86,24 +103,24 @@ public class CadastroDeAlunoUI extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jButton2)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButton1))
+                            .addComponent(btnEnviar))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField5)
-                            .addComponent(jTextField4)
-                            .addComponent(jTextField3)
+                            .addComponent(txtTelefone)
+                            .addComponent(txtData)
+                            .addComponent(txtRG)
                             .addComponent(jLabel6)
                             .addComponent(jLabel5)
                             .addComponent(jLabel4)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField6))))
+                            .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
+                            .addComponent(txtCPF)
+                            .addComponent(txtEndereco))))
                 .addContainerGap(65, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextField1, jTextField2, jTextField3, jTextField4, jTextField5});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtCPF, txtData, txtNome, txtRG, txtTelefone});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,30 +130,30 @@ public class CadastroDeAlunoUI extends javax.swing.JFrame {
                 .addGap(51, 51, 51)
                 .addComponent(jLabel1)
                 .addGap(3, 3, 3)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
                 .addComponent(jLabel3)
                 .addGap(4, 4, 4)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addGap(2, 2, 2)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnEnviar)
                     .addComponent(jButton2))
                 .addContainerGap(98, Short.MAX_VALUE))
         );
@@ -158,6 +175,21 @@ public class CadastroDeAlunoUI extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
+	
+        ControladorAluno.getInstance().cadastrarAluno(
+                        txtNome.getText(),
+                        txtCPF.getText(),
+                        txtRG.getText(),
+                        txtData.getText(),
+                        txtTelefone.getText(),
+                        txtEndereco.getText()
+        );
+
+        this.setVisible(false);
+        ControladorAluno.getInstance().updateAlunosTableData();
+    }//GEN-LAST:event_btnEnviarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,7 +228,7 @@ public class CadastroDeAlunoUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnEnviar;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -206,11 +238,11 @@ public class CadastroDeAlunoUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField txtCPF;
+    private javax.swing.JTextField txtData;
+    private javax.swing.JTextField txtEndereco;
+    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtRG;
+    private javax.swing.JTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,7 +6,11 @@
 package gerenciadordepersistencia;
 
 import gymmanagement.interfaces.IObjectID;
+import gymmanagement.modelos.Aluno;
+import gymmanagement.modelos.Cargo;
+import gymmanagement.modelos.Exercicio;
 import gymmanagement.modelos.Funcionario;
+import gymmanagement.modelos.Treino;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -31,7 +35,7 @@ public class PersistenciaDeDados {
        load();
     }
 
-	public static PersistenciaDeDados getInstance() {
+    public static PersistenciaDeDados getInstance() {
         if (persistenciaDeDados == null) {
             persistenciaDeDados = new PersistenciaDeDados();
         }
@@ -51,27 +55,62 @@ public class PersistenciaDeDados {
         return new ArrayList<Object>(cache.values());
     }
 
-    public ArrayList<Funcionario> getFuncionarios() {
+    public ArrayList<Cargo> getListaCargos() {
         ArrayList<Object> values = this.getList();
-		ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
-		for(Object value : values) {
-			if(value instanceof Funcionario) funcionarios.add(((Funcionario) value));
-		}
-		return funcionarios;
+        ArrayList<Cargo> cargos = new ArrayList<Cargo>();
+        for(Object value : values) {
+            if(value instanceof Cargo) cargos.add(((Cargo) value));
+        }
+        return cargos;
     }
 	
-	public ArrayList<Object> getKeys() {
-		return new ArrayList<>(this.cache.keySet());
-	}
+    public ArrayList<Aluno> getListaAlunos() {
+        ArrayList<Object> values = this.getList();
+        ArrayList<Aluno> alunos = new ArrayList<Aluno>();
+        for(Object value : values) {
+            if(value instanceof Aluno) alunos.add(((Aluno) value));
+        }
+        return alunos;
+    }
+
+    public ArrayList<Treino> getListaTreinos() {
+        ArrayList<Object> values = this.getList();
+        ArrayList<Treino> treinos = new ArrayList<Treino>();
+        for(Object value : values) {
+            if(value instanceof Treino) treinos.add(((Treino) value));
+        }
+        return treinos;
+    }
+    
+    public ArrayList<Exercicio> getExercicios() {
+        ArrayList<Object> values = this.getList();
+        ArrayList<Exercicio> exercicios = new ArrayList<Exercicio>();
+        for(Object value : values) {
+            if(value instanceof Exercicio) exercicios.add(((Exercicio) value));
+        }
+        return exercicios;
+    }
+    
+    public ArrayList<Funcionario> getListaFuncionarios() {
+        ArrayList<Object> values = this.getList();
+        ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
+        for(Object value : values) {
+            if(value instanceof Funcionario) funcionarios.add(((Funcionario) value));
+        }
+        return funcionarios;
+    }
+	
+    public ArrayList<Object> getKeys() {
+        return new ArrayList<>(this.cache.keySet());
+    }
 	
     public void remove(Integer id) {
-		cache.remove(id);
+        cache.remove(id);
         persist();
     }
 
     private void persist() {
-        
-                try {
+        try {
             FileOutputStream fOS = new FileOutputStream(fileName);
             ObjectOutputStream oOS = new ObjectOutputStream(fOS);
 
@@ -88,7 +127,6 @@ public class PersistenciaDeDados {
         } catch (IOException ex) {
             Logger.getLogger(PersistenciaDeDados.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     private void load() {

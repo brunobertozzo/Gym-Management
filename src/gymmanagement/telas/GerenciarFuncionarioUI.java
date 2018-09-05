@@ -6,6 +6,9 @@
 package gymmanagement.telas;
 
 import gymmanagement.controladores.ControladorFuncionario;
+import gymmanagement.modelos.Funcionario;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,7 +24,44 @@ public class GerenciarFuncionarioUI extends javax.swing.JFrame {
     }
     
     public void mostrar() {
+        updateData();
         this.setVisible(true);
+    }
+    
+    public void updateData() {
+
+        //Configuracao modelTable1
+        DefaultTableModel modelTable1 = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        modelTable1.addColumn("Nome");
+        modelTable1.addColumn("CPF");
+        modelTable1.addColumn("RG");
+        modelTable1.addColumn("Data de nascimento");
+        modelTable1.addColumn("Telefone");
+        modelTable1.addColumn("Endereço");
+        modelTable1.addColumn("Cargo");
+		
+        ArrayList<Funcionario> listaFuncionarios = ControladorFuncionario.getInstance().getFuncionarios();
+        jTable1.removeAll();
+        for (Funcionario funcionario : listaFuncionarios) {
+            modelTable1.addRow(new Object[]{
+                funcionario.getNome(),
+                funcionario.getCpf(),
+                funcionario.getRg(),
+                funcionario.getDataDeNascimento(),
+                funcionario.getTelefone(),
+                funcionario.getEndereco(),
+                funcionario.getCargo().getNome()
+            });
+        }
+        jTable1.setModel(modelTable1);
+
+        this.repaint();
     }
 
     /**
@@ -63,15 +103,20 @@ public class GerenciarFuncionarioUI extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nome", "CPF", "RG", "Data de nascimento", "Telefone", "Endereço", "Cargo"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -95,7 +140,7 @@ public class GerenciarFuncionarioUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addGap(30, 30, 30)
+                .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))

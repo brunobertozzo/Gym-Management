@@ -6,6 +6,10 @@
 package gymmanagement.telas;
 
 import gymmanagement.controladores.ControladorAluno;
+import gymmanagement.modelos.Aluno;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,6 +17,7 @@ import gymmanagement.controladores.ControladorAluno;
  */
 public class GerenciarAlunosUI extends javax.swing.JFrame {
 
+    private ArrayList<Aluno> alunos;
     /**
      * Creates new form AlunosUI
      */
@@ -21,10 +26,60 @@ public class GerenciarAlunosUI extends javax.swing.JFrame {
     }
     
     public void mostrar() {
+        updateData();
         this.setVisible(true);
     }
     
 
+    public void exibeSucessoDeletar() {
+        JOptionPane.showMessageDialog(
+                null,
+                "Aluno deletado com sucesso!",
+                "Deletar",
+                JOptionPane.PLAIN_MESSAGE
+        );
+    }
+    
+    public void exibeErroDeletar() {
+        JOptionPane.showMessageDialog(
+                null,
+                "Selecione um aluno a ação",
+                "Erro",
+                JOptionPane.PLAIN_MESSAGE
+        );
+    }
+
+    public void updateData() {
+
+        DefaultTableModel modelTable1 = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        modelTable1.addColumn("Nome");
+        modelTable1.addColumn("CPF");
+        modelTable1.addColumn("RG");
+        modelTable1.addColumn("Data de nascimento");
+        modelTable1.addColumn("Telefone");
+        modelTable1.addColumn("Endereço");
+        modelTable1.addColumn("Treino");
+		
+        ArrayList<Aluno> listaAlunos = ControladorAluno.getInstance().getAlunos();
+        jTable1.removeAll();
+		
+        for (Aluno aluno : listaAlunos) {
+            String nomeTreino = aluno.getTreino() != null ? aluno.getTreino().getNome() : "";
+			
+            modelTable1.addRow(new Object[]{
+                aluno.getNome(), aluno.getCpf(), aluno.getRg(), aluno.getDataDeNascimento(),
+			aluno.getTelefone(), aluno.getEndereco(), nomeTreino,
+            });
+        }
+		
+        jTable1.setModel(modelTable1);
+        this.repaint();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,6 +114,11 @@ public class GerenciarAlunosUI extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymmanagement/imagens/icons8-haltere-25.png"))); // NOI18N
         jButton2.setText("Atribuir treino");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Voltar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -69,15 +129,27 @@ public class GerenciarAlunosUI extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nome", "CPF", "RG", "Data Nascimento", "Telefone", "Endereço"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -87,16 +159,15 @@ public class GerenciarAlunosUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 797, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(btnCadastrarAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(35, 35, 35)
-                            .addComponent(jButton2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 791, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnCadastrarAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(jButton2)
+                        .addGap(264, 264, 264)
+                        .addComponent(jButton3)))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCadastrarAluno, jButton2, jButton3});
@@ -112,8 +183,8 @@ public class GerenciarAlunosUI extends javax.swing.JFrame {
                     .addComponent(jButton2)
                     .addComponent(jButton3))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCadastrarAluno, jButton2, jButton3});
@@ -139,6 +210,15 @@ public class GerenciarAlunosUI extends javax.swing.JFrame {
     private void btnCadastrarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarAlunoActionPerformed
         ControladorAluno.getInstance().mostrarCadastroAluno();
     }//GEN-LAST:event_btnCadastrarAlunoActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if(jTable1.getSelectedRow() != -1) {
+            ControladorAluno.getInstance().mostrarTreino(this.alunos.get(jTable1.getSelectedRow()));	
+        } else {
+            exibeErroDeletar();
+        }
+//ControladorAluno.getInstance().mostrarTreino();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

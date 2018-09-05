@@ -5,8 +5,13 @@
  */
 package gymmanagement.controladores;
 
+import gerenciadordecadastros.GerenciadorDeCadastro;
+import gerenciadordepersistencia.PersistenciaDeDados;
+import gymmanagement.modelos.Cargo;
+import gymmanagement.modelos.Funcionario;
 import gymmanagement.telas.CadastroDeFuncionarioUI;
 import gymmanagement.telas.GerenciarFuncionarioUI;
+import java.util.ArrayList;
 
 /**
  *
@@ -38,4 +43,35 @@ public class ControladorFuncionario {
     public void mostrarCadastroFuncionario() {
         this.cadastroDeFuncionarioUI.mostrar();
     }
+    
+    public ArrayList<Funcionario> getFuncionarios() {
+        return PersistenciaDeDados.getInstance().getListaFuncionarios();
+    }
+	
+    public ArrayList<Cargo> getCargos() {
+        return PersistenciaDeDados.getInstance().getListaCargos();
+    }	
+	
+    public void cadastrarFuncionario(String nome, String cpf,String rg,
+                    String dataNascimento,String telefone,String endereco,
+                    String login,String senha,Cargo cargo) {
+        try {
+            GerenciadorDeCadastro.getInstance().cadastraFuncionario(nome,cpf,rg,
+                            dataNascimento,telefone,endereco,login,senha,cargo);	
+        } catch(Exception ex) {
+                cadastroDeFuncionarioUI.exibeErro(ex.getMessage());
+        }
+    }
+	
+	public void removeFuncionario(int index) {
+		if(index != -1) {
+//			getFuncionarios()
+		} else {
+			//TODO CHAMAR MODAL ERRO
+		}
+	}
+	
+	public void updateTableData() {
+		this.gerenciarFuncionarioUI.updateData();
+	}
 }
