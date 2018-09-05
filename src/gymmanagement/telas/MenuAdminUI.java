@@ -5,6 +5,9 @@
  */
 package gymmanagement.telas;
 
+import gymmanagement.controladores.ControladorAluno;
+import gymmanagement.controladores.ControladorFuncionario;
+
 /**
  *
  * @author bruno.bertozzo
@@ -16,6 +19,10 @@ public class MenuAdminUI extends javax.swing.JFrame {
      */
     public MenuAdminUI() {
         initComponents();
+    }
+    
+    public void mostrar() {
+        this.setVisible(true);
     }
 
     /**
@@ -29,26 +36,36 @@ public class MenuAdminUI extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnGerenciarAluno = new javax.swing.JButton();
+        btnGerenciarFunc = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel1.setText("Bem-vindo Administrador!");
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymmanagement/imagens/userIcon.png"))); // NOI18N
-        jButton4.setText("Gerenciar Alunos");
+        btnGerenciarAluno.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnGerenciarAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymmanagement/imagens/userIcon.png"))); // NOI18N
+        btnGerenciarAluno.setText("Gerenciar Alunos");
+        btnGerenciarAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGerenciarAlunoActionPerformed(evt);
+            }
+        });
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymmanagement/imagens/funcIcon.png"))); // NOI18N
-        jButton5.setText("Gerenciar Funcionarios");
+        btnGerenciarFunc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnGerenciarFunc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymmanagement/imagens/funcIcon.png"))); // NOI18N
+        btnGerenciarFunc.setText("Gerenciar Funcionarios");
+        btnGerenciarFunc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGerenciarFuncActionPerformed(evt);
+            }
+        });
 
         btnSair.setText("Sair");
         btnSair.addActionListener(new java.awt.event.ActionListener() {
@@ -80,14 +97,14 @@ public class MenuAdminUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(215, 215, 215)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnGerenciarFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnGerenciarAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))))
                 .addContainerGap(223, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton4, jButton5});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnGerenciarAluno, btnGerenciarFunc});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,15 +121,15 @@ public class MenuAdminUI extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnGerenciarAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
-                .addComponent(jButton5)
+                .addComponent(btnGerenciarFunc)
                 .addGap(34, 34, 34)
                 .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(58, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton4, jButton5});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnGerenciarAluno, btnGerenciarFunc});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,6 +155,14 @@ public class MenuAdminUI extends javax.swing.JFrame {
         
        
     }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnGerenciarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciarAlunoActionPerformed
+         ControladorAluno.getInstance().mostrar();
+    }//GEN-LAST:event_btnGerenciarAlunoActionPerformed
+
+    private void btnGerenciarFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciarFuncActionPerformed
+        ControladorFuncionario.getInstance().mostrar();
+    }//GEN-LAST:event_btnGerenciarFuncActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,9 +203,9 @@ public class MenuAdminUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGerenciarAluno;
+    private javax.swing.JButton btnGerenciarFunc;
     private javax.swing.JButton btnSair;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

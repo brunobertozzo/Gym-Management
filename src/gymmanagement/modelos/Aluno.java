@@ -9,11 +9,13 @@ package gymmanagement.modelos;
  *
  * @author bruno
  */
-public class Aluno {
+public class Aluno extends Usuario {
 
     private Treino treino;
 
-    public Aluno(Treino treino) {
+     public Aluno(String nome, String cpf, String rg, String dataNascimento,
+                String telefone, String endereco, Treino treino) {
+        super(nome, cpf, rg, dataNascimento, telefone, endereco);
         this.treino = treino;
     }
 
@@ -24,9 +26,5 @@ public class Aluno {
     public void setTreino(Treino treino) {
         this.treino = treino;
     }
-    
-    
-    
-    
-    
+   
 }

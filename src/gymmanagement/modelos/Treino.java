@@ -5,14 +5,17 @@
  */
 package gymmanagement.modelos;
 
+import gymmanagement.interfaces.IObjectID;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author bruno
  */
-public class Treino {
+public class Treino implements Serializable, IObjectID {
     private static final long serialVersionUID = 1L;
+    private int id;
     
     private ArrayList<Exercicio> treino;
     private String nome;
@@ -21,6 +24,10 @@ public class Treino {
         this.treino = treino;
     }
 
+    @Override
+    public int getID() {
+        return this.id;
+    }
     public ArrayList<Exercicio> getTreino() {
         return treino;
     }
@@ -36,7 +43,5 @@ public class Treino {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
-    
-    
+   
 }

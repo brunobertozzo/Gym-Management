@@ -5,7 +5,9 @@
  */
 package gymmanagement.controladores;
 
-import gymmanagement.telas.LoginUI;
+import gerenciadordepersistencia.PersistenciaDeDados;
+import gymmanagement.modelos.Cargo;
+import gymmanagement.modelos.Funcionario;
 
 /**
  *
@@ -18,7 +20,6 @@ public class ControladorPrincipal {
 
     
     public ControladorPrincipal() {
-        this.LoginUI = new LoginUI();
     }
     public static ControladorPrincipal getInstance() {
         if (controladorPrincipal == null) {
@@ -27,33 +28,26 @@ public class ControladorPrincipal {
         return controladorPrincipal;
     }
     
-    public void inicia() {
-		Cargo cargoAdmin = new Cargo("Administrador", 10000, true);
-		Funcionario admin = new Funcionario(
-				"Cleiton",
-				123456789,
-				987654321,
-				"01/01/1981",
-				"999092312",
-				"Rua Sem Nome",
-				"admin",
-				"admin",
-				cargoAdmin
-		);
-	
-		PersistenciaDeDados.getInstance().put(cargoAdmin);
-		PersistenciaDeDados.getInstance().put(admin);
+    public void boot() {
+        //Cargos e funcionarios hard-coded
+        //admin hard-code
+        Cargo adminPadrao = new Cargo("Administrador", 7000, true);
+        Funcionario admin = new Funcionario("Ademir", "25/12/1990", "1234123",
+				"99888778", "Av. Madre Benvenuta", "984441000",
+				"admin", "admin", adminPadrao);
+        //funcionario hard-code
+        Cargo treinadorPadrao = new Cargo("Treinador", 4500, false);
+        Funcionario treinador = new Funcionario("Treinador", "25/12/1990", "1234124",
+				"99888779", "Av. Madre Benvenuta", "984441001",
+				"func", "func", treinadorPadrao);
+                                
+        PersistenciaDeDados.getInstance().put(adminPadrao);
+        PersistenciaDeDados.getInstance().put(admin);
 		
-        telaLogin.exibir();
+        PersistenciaDeDados.getInstance().put(treinadorPadrao);
+        PersistenciaDeDados.getInstance().put(treinador);
+        
+        ControladorLogin.getInstance().mostrar();
     }
-	
-	public void login(String login, String senha) {
-		if(GerenciadorAutenticacao.getInstance().autentica(login, senha)) {
-			ControladorMenu.getInstance().exibir();
-		} else {
-			System.out.println("Login ou senha incorretos!");
-			//EXIBIR MODAL DE SENHA LOGIN OU SENHA INCORRETOS ERRADA
-		}
-	}
-    
+   
 }

@@ -5,30 +5,42 @@
  */
 package gymmanagement.modelos;
 
-import java.sql.Date;
+import gymmanagement.controladores.ControladorPrincipal;
+import gymmanagement.interfaces.IObjectID;
+import java.io.Serializable;
 
 /**
  *
  * @author bruno
  */
-public abstract class Usuario {
+public abstract class Usuario implements Serializable, IObjectID {
     private static final long serialVersionUID = 1L;
+    private Integer id;
     private String nome;
-    private Date dataDeNascimento;
+    private String dataDeNascimento;
     private String rg;
     private String cpf;
-    private String cep;
+    private String endereco;
     private String telefone;    
 
-    public Usuario(String nome, Date dataDeNascimento, String rg, String cpf, String cep, String telefone) {
+    public Usuario(String nome, String dataDeNascimento, String rg, String cpf, 
+                    String endereco, String telefone) {
+        ControladorPrincipal.getInstance().contadorEntidades++;
+        this.id = ControladorPrincipal.getInstance().contadorEntidades;
+        
         this.nome = nome;
         this.dataDeNascimento = dataDeNascimento;
         this.rg = rg;
         this.cpf = cpf;
-        this.cep = cep;
+        this.endereco = endereco;
         this.telefone = telefone;
     }
-
+    
+    @Override
+    public int getID() {
+        return id;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -37,11 +49,11 @@ public abstract class Usuario {
         this.nome = nome;
     }
 
-    public Date getDataDeNascimento() {
+    public String getDataDeNascimento() {
         return dataDeNascimento;
     }
 
-    public void setDataDeNascimento(Date dataDeNascimento) {
+    public void setDataDeNascimento(String dataDeNascimento) {
         this.dataDeNascimento = dataDeNascimento;
     }
 
@@ -61,12 +73,12 @@ public abstract class Usuario {
         this.cpf = cpf;
     }
 
-    public String getCep() {
-        return cep;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setCep(String cep) {
-        this.cep = cep;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
     public String getTelefone() {
@@ -76,4 +88,5 @@ public abstract class Usuario {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+    
 }

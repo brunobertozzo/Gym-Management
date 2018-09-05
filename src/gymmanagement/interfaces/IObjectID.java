@@ -10,5 +10,6 @@ package gymmanagement.interfaces;
  * @author bruno
  */
 public interface IObjectID {
+    
     public int getID();
 }

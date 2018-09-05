@@ -5,6 +5,8 @@
  */
 package gymmanagement.telas;
 
+import gymmanagement.controladores.ControladorAluno;
+
 /**
  *
  * @author LabTIC
@@ -16,6 +18,10 @@ public class MenuFuncionarioUI extends javax.swing.JFrame {
      */
     public MenuFuncionarioUI() {
         initComponents();
+    }
+    
+    public void mostrar() {
+        this.setVisible(true);
     }
 
     /**
@@ -29,20 +35,26 @@ public class MenuFuncionarioUI extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        btnGerenciarAlunos = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setFocusable(false);
 
         jLabel1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel1.setText("Bem-vindo colaborador!");
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymmanagement/imagens/userIcon.png"))); // NOI18N
-        jButton4.setText("Gerenciar Alunos");
+        btnGerenciarAlunos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnGerenciarAlunos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymmanagement/imagens/userIcon.png"))); // NOI18N
+        btnGerenciarAlunos.setText("Gerenciar Alunos");
+        btnGerenciarAlunos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGerenciarAlunosActionPerformed(evt);
+            }
+        });
 
         btnSair.setText("Sair");
         btnSair.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +86,7 @@ public class MenuFuncionarioUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(215, 215, 215)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+                            .addComponent(btnGerenciarAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
                             .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))))
                 .addGap(162, 162, 162))
@@ -94,7 +106,7 @@ public class MenuFuncionarioUI extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addComponent(jLabel2)
                 .addGap(72, 72, 72)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnGerenciarAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -123,6 +135,10 @@ public class MenuFuncionarioUI extends javax.swing.JFrame {
         this.dispose();
 
     }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnGerenciarAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciarAlunosActionPerformed
+        ControladorAluno.getInstance().mostrar();
+    }//GEN-LAST:event_btnGerenciarAlunosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,8 +176,8 @@ public class MenuFuncionarioUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGerenciarAlunos;
     private javax.swing.JButton btnSair;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

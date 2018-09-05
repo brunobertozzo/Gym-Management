@@ -5,6 +5,8 @@
  */
 package gymmanagement.telas;
 
+import gymmanagement.controladores.ControladorFuncionario;
+
 /**
  *
  * @author bruno
@@ -16,6 +18,10 @@ public class GerenciarFuncionarioUI extends javax.swing.JFrame {
      */
     public GerenciarFuncionarioUI() {
         initComponents();
+    }
+    
+    public void mostrar() {
+        this.setVisible(true);
     }
 
     /**
@@ -34,7 +40,7 @@ public class GerenciarFuncionarioUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Gerenciar funcionarios");
@@ -42,6 +48,11 @@ public class GerenciarFuncionarioUI extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymmanagement/imagens/icons8-adicionar-25.png"))); // NOI18N
         jButton1.setText("Cadastrar funcionario");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Voltar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -110,8 +121,12 @@ public class GerenciarFuncionarioUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ControladorFuncionario.getInstance().mostrarCadastroFuncionario();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

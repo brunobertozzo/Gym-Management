@@ -20,6 +20,32 @@ public class LoginUI extends javax.swing.JFrame {
     public LoginUI() {
         initComponents();
     }
+    
+    public void mostrar() {
+        this.setVisible(true);
+    }
+    
+    public void ocultar() {
+        this.setVisible(false);
+    }
+	
+    public void exibeErroLogin() {
+        JOptionPane.showMessageDialog(
+            null,
+            "Erro ao entrar, usuario ou senha incorretos",
+            "Erro",
+            JOptionPane.PLAIN_MESSAGE
+        );
+    }
+    
+    public void exibeSucessoLogin() {
+        JOptionPane.showMessageDialog(
+            null,
+            "Bem vindo ao GymControl!",
+            "Sucesso",
+            JOptionPane.PLAIN_MESSAGE
+        );
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -141,15 +167,7 @@ public class LoginUI extends javax.swing.JFrame {
     }//GEN-LAST:event_txtLoginActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        
-//        ControladorLogin.logar(String login, String senha);
-        MenuAdminUI adminUI = new MenuAdminUI();
-        adminUI.setLocationRelativeTo(null);
-        adminUI.setVisible(true);
-       
-        this.dispose();
-            
-        
+        ControladorLogin.getInstance().login(txtLogin.getText(), txtSenha.getText());
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**

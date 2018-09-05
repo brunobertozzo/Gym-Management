@@ -5,6 +5,7 @@
  */
 package gymmanagement;
 
+import gymmanagement.controladores.ControladorPrincipal;
 import gymmanagement.telas.LoginUI;
 
 /**
@@ -17,7 +18,8 @@ public class GymManagement {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new LoginUI().setVisible(true); 
+        //Chama o metodo que inicia o sistema
+        ControladorPrincipal.getInstance().boot(); 
    }
     
 }

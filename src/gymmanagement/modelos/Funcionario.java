@@ -9,12 +9,14 @@ package gymmanagement.modelos;
  *
  * @author bruno
  */
-public class Funcionario {
+public class Funcionario extends Usuario {
     private String login;
     private String senha;
     private Cargo cargo;
 
-    public Funcionario(String login, String senha, Cargo cargo) {
+    public Funcionario(String nome, String dataDeNascimento, String rg, String cpf, 
+                String endereco, String telefone, String login, String senha, Cargo cargo) {
+        super(nome, dataDeNascimento, rg, cpf, endereco, telefone);
         this.login = login;
         this.senha = senha;
         this.cargo = cargo;
@@ -43,6 +45,4 @@ public class Funcionario {
     public void setCargo(Cargo cargo) {
         this.cargo = cargo;
     }
-    
-    
 }

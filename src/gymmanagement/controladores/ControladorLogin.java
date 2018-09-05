@@ -5,17 +5,47 @@
  */
 package gymmanagement.controladores;
 
+import autenticacaodeusuarios.AutenticacaoDeUsuarios;
+import gymmanagement.modelos.Funcionario;
+import gymmanagement.telas.LoginUI;
+
 /**
  *
  * @author bruno
  */
 public class ControladorLogin {
 
-    public ControladorLogin() {
+    public static ControladorLogin controladorLogin;
+    public LoginUI loginUI;
+
+    private ControladorLogin() {
+        this.loginUI = new LoginUI();
+    }
+
+    public static ControladorLogin getInstance() {
+        if (controladorLogin == null) {
+            controladorLogin = new ControladorLogin();
+        }
+        return controladorLogin;
     }
     
+    public void mostrar(){
+        loginUI.mostrar();
+    }
     
-//    public boolean logar(String login, String senha )
+    public void login(String login, String senha) {
+        try {
+            Funcionario funcionario = AutenticacaoDeUsuarios.getInstance().autentica(login, senha);
+            loginUI.ocultar();
+            if(funcionario.getCargo().isAdmin()) {
+                ControladorNavegacao.getInstance().mostrarMenuAdmin();
+            } else {
+                ControladorNavegacao.getInstance().mostrarMenuComum();
+            }
+        } catch(Exception ex) {
+            loginUI.exibeErroLogin();
+        }
+    }
     
     
     
