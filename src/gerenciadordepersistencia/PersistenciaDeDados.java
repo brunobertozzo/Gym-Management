@@ -46,7 +46,7 @@ public class PersistenciaDeDados {
         cache.put(object.getID(), object);
         persist();
     }
-	
+    
     public Object get(Integer id) {
         return cache.get(id);
     }

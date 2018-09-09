@@ -21,13 +21,21 @@ public class ControladorPrincipal {
 
     
     public ControladorPrincipal() {
+//        if(PersistenciaDeDados.getInstance().get(contadorEntidades) == null) {
+//            this.contadorEntidades = 0;
+//        } else {
+//            this.contadorEntidades = (int) PersistenciaDeDados.getInstance().get(contadorEntidades);
+//        }
     }
+    
     public static ControladorPrincipal getInstance() {
         if (controladorPrincipal == null) {
             controladorPrincipal = new ControladorPrincipal();
         }
         return controladorPrincipal;
     }
+    
+    
     
     public void boot() {
         //Cargos e funcionarios hard-coded

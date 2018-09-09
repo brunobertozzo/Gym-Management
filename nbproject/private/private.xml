@@ -4,10 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/bruno/Documents/Projetos/Gym-Management/src/gerenciadordepersistencia/PersistenciaDeDados.java</file>
-            <file>file:/C:/Users/bruno/Documents/Projetos/Gym-Management/src/gymmanagement/controladores/ControladorAluno.java</file>
-            <file>file:/C:/Users/bruno/Documents/Projetos/Gym-Management/src/gerenciadordecadastros/GerenciadorDeCadastro.java</file>
-            <file>file:/C:/Users/bruno/Documents/Projetos/Gym-Management/src/gymmanagement/telas/CadastroDeAlunoUI.java</file>
-            <file>file:/C:/Users/bruno/Documents/Projetos/Gym-Management/src/gymmanagement/telas/CadastroTreinoUI.java</file>
+            <file>file:/C:/Users/bruno/Documents/Projetos/Gym-Management/src/gymmanagement/modelos/Exercicio.java</file>
+            <file>file:/C:/Users/bruno/Documents/Projetos/Gym-Management/src/gymmanagement/controladores/ControladorPrincipal.java</file>
+            <file>file:/C:/Users/bruno/Documents/Projetos/Gym-Management/src/gymmanagement/modelos/Usuario.java</file>
+            <file>file:/C:/Users/bruno/Documents/Projetos/Gym-Management/src/gymmanagement/modelos/Cargo.java</file>
+            <file>file:/C:/Users/bruno/Documents/Projetos/Gym-Management/src/gymmanagement/modelos/Treino.java</file>
         </group>
     </open-files>
 </project-private>
