@@ -22,6 +22,7 @@ public class GerenciarAlunosUI extends javax.swing.JFrame {
      * Creates new form AlunosUI
      */
     public GerenciarAlunosUI() {
+        this.alunos = new ArrayList<>();
         initComponents();
     }
     
@@ -49,6 +50,15 @@ public class GerenciarAlunosUI extends javax.swing.JFrame {
                 JOptionPane.PLAIN_MESSAGE
         );
     }
+    
+    public void exibeErro(String mensagem) {
+        JOptionPane.showMessageDialog(
+                null,
+                mensagem,
+                "Erro",
+                JOptionPane.PLAIN_MESSAGE
+        );
+    }
 
     public void updateData() {
 
@@ -66,10 +76,10 @@ public class GerenciarAlunosUI extends javax.swing.JFrame {
         modelTable1.addColumn("Endereço");
         modelTable1.addColumn("Treino");
 		
-        ArrayList<Aluno> listaAlunos = ControladorAluno.getInstance().getAlunos();
+        this.alunos = ControladorAluno.getInstance().getAlunos();
         jTable1.removeAll();
 		
-        for (Aluno aluno : listaAlunos) {
+        for (Aluno aluno : this.alunos) {
             String nomeTreino = aluno.getTreino() != null ? aluno.getTreino().getNome() : "";
 			
             modelTable1.addRow(new Object[]{
@@ -97,6 +107,7 @@ public class GerenciarAlunosUI extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -104,7 +115,7 @@ public class GerenciarAlunosUI extends javax.swing.JFrame {
         jLabel1.setText("Gerenciar alunos");
 
         btnCadastrarAluno.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnCadastrarAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymmanagement/imagens/icons8-adicionar-25.png"))); // NOI18N
+        btnCadastrarAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymmanagement/imagens/icons8-plus-25.png"))); // NOI18N
         btnCadastrarAluno.setText("Cadastrar aluno");
         btnCadastrarAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,7 +124,7 @@ public class GerenciarAlunosUI extends javax.swing.JFrame {
         });
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymmanagement/imagens/icons8-haltere-25.png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymmanagement/imagens/icons8-dumbbell-25.png"))); // NOI18N
         jButton2.setText("Atribuir treino");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,6 +164,13 @@ public class GerenciarAlunosUI extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jButton1.setText("Ver treino");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -166,6 +184,8 @@ public class GerenciarAlunosUI extends javax.swing.JFrame {
                             .addComponent(btnCadastrarAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(29, 29, 29)
                             .addComponent(jButton2)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButton1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton3))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 797, Short.MAX_VALUE)))
@@ -176,20 +196,21 @@ public class GerenciarAlunosUI extends javax.swing.JFrame {
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel1)
                 .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCadastrarAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jButton3)
+                    .addComponent(jButton1)
                     .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(btnCadastrarAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCadastrarAluno, jButton2, jButton3});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCadastrarAluno, jButton1, jButton2, jButton3});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -215,12 +236,19 @@ public class GerenciarAlunosUI extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if(jTable1.getSelectedRow() != -1) {
-            ControladorAluno.getInstance().mostrarTreino(this.alunos.get(jTable1.getSelectedRow()));	
+            ControladorAluno.getInstance().mostrarCadastroTreino(this.alunos.get(jTable1.getSelectedRow()));	
         } else {
-            exibeErroDeletar();
+            exibeErro("Selecione um aluno para atribuir treino");
         }
-//ControladorAluno.getInstance().mostrarTreino();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    if(jTable1.getSelectedRow() != -1) {
+        ControladorAluno.getInstance().mostrarTreino(this.alunos.get(jTable1.getSelectedRow()));
+    } else {
+            exibeErro("Selecione um aluno ver seu treino");
+        }  
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -260,6 +288,7 @@ public class GerenciarAlunosUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrarAluno;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;

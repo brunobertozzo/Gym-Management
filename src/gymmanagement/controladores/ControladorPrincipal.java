@@ -7,6 +7,7 @@ package gymmanagement.controladores;
 
 import gerenciadordepersistencia.PersistenciaDeDados;
 import gymmanagement.modelos.Cargo;
+import gymmanagement.modelos.Exercicio;
 import gymmanagement.modelos.Funcionario;
 
 /**
@@ -41,11 +42,33 @@ public class ControladorPrincipal {
                                 "25/12/1990", "984441000", "Av. Madre Benvenuta",
 				"func", "func", treinadorPadrao);
                                 
+        Exercicio ex1 = new Exercicio("Supino");
+        Exercicio ex2 = new Exercicio("Rosca Direta");
+        Exercicio ex3 = new Exercicio("Agachamento");
+        Exercicio ex4 = new Exercicio("Tríceps Polia");
+        Exercicio ex5 = new Exercicio("Crucifixo");
+        Exercicio ex6 = new Exercicio("Bike");
+        Exercicio ex7 = new Exercicio("Remada Alta");
+        Exercicio ex8 = new Exercicio("Desenvolvimento com Halteres");
+        Exercicio ex9 = new Exercicio("Mesa Flexora");
+        Exercicio ex10 = new Exercicio("Leg Press");
+                
         PersistenciaDeDados.getInstance().put(adminPadrao);
         PersistenciaDeDados.getInstance().put(admin);
 		
         PersistenciaDeDados.getInstance().put(treinadorPadrao);
         PersistenciaDeDados.getInstance().put(treinador);
+        
+        PersistenciaDeDados.getInstance().put(ex1);
+        PersistenciaDeDados.getInstance().put(ex2);
+        PersistenciaDeDados.getInstance().put(ex3);
+        PersistenciaDeDados.getInstance().put(ex4);
+        PersistenciaDeDados.getInstance().put(ex5);
+        PersistenciaDeDados.getInstance().put(ex6);
+        PersistenciaDeDados.getInstance().put(ex7);
+        PersistenciaDeDados.getInstance().put(ex8);
+        PersistenciaDeDados.getInstance().put(ex9);
+        PersistenciaDeDados.getInstance().put(ex10);
         
         ControladorLogin.getInstance().mostrar();
     }

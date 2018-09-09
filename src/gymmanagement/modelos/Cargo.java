@@ -29,7 +29,7 @@ public class Cargo implements Serializable, IObjectID{
         this.id = ControladorPrincipal.getInstance().contadorEntidades;
     }
 
-     @Override
+    @Override
     public int getID() {
         return this.id;
     }
@@ -57,16 +57,4 @@ public class Cargo implements Serializable, IObjectID{
     public void setAdmin(boolean ehAdmin) {
         this.ehAdmin = ehAdmin;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-    
-    
-    
-    
 }

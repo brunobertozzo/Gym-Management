@@ -41,7 +41,7 @@ public class MenuFuncionarioUI extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFocusable(false);
 
         jLabel1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N

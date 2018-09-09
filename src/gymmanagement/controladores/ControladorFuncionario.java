@@ -26,7 +26,6 @@ public class ControladorFuncionario {
     private ControladorFuncionario() {
         this.gerenciarFuncionarioUI = new GerenciarFuncionarioUI();
         this.cadastroDeFuncionarioUI = new CadastroDeFuncionarioUI();
-        
     }
 
     public static ControladorFuncionario getInstance() {

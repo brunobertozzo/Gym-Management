@@ -5,6 +5,7 @@
  */
 package gymmanagement.modelos;
 
+import gymmanagement.controladores.ControladorPrincipal;
 import gymmanagement.interfaces.IObjectID;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -16,25 +17,40 @@ import java.util.ArrayList;
 public class Treino implements Serializable, IObjectID {
     private static final long serialVersionUID = 1L;
     private int id;
+    private ArrayList<Exercicio> exercicios;
     
-    private ArrayList<Exercicio> treino;
     private String nome;
 
-    public Treino(String nome, ArrayList<Exercicio> treino) {
+    public Treino(String nome, ArrayList<Exercicio> exercicios) {
         this.nome = nome;
-        this.treino = treino;
+        this.exercicios = new ArrayList<Exercicio>(exercicios);
+        ControladorPrincipal.getInstance().contadorEntidades++;
+        this.id = ControladorPrincipal.getInstance().contadorEntidades;
     }
 
     @Override
     public int getID() {
         return this.id;
     }
-    public ArrayList<Exercicio> getTreino() {
-        return treino;
+    
+    public boolean add(Exercicio exercicio) {
+        return this.exercicios.add(exercicio);
     }
 
-    public void setTreino(ArrayList<Exercicio> treino) {
-        this.treino = treino;
+    public boolean remove(Exercicio exercicio) {
+        return this.exercicios.remove(exercicio);
+    }
+
+    public boolean estaVazio() {
+        return this.exercicios.isEmpty();
+    }
+
+    public int tamanho() {
+        return this.exercicios.size();
+    }
+    
+    public ArrayList<Exercicio> getExercicios() {
+        return exercicios;
     }
 
     public String getNome() {

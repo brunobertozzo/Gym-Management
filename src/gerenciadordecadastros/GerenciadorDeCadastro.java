@@ -39,29 +39,20 @@ public class GerenciadorDeCadastro {
     public Funcionario cadastraFuncionario(String nome, String cpf, String rg,
                     String dataNascimento, String telefone, String endereco,
                     String login, String senha, Cargo cargo
-    ) throws Exception {
-        validaNome(nome);
-        validaCpf(cpf);
-        validaRg(rg);
-        validaDataNascimento(dataNascimento);
-        validaTelefone(telefone);
-        validaEndereco(endereco);
-        validaLogin(login);
-        validaSenha(senha);
+                    ) throws Exception {
+                        validaNome(nome);
+                        validaCpf(cpf);
+                        validaRg(rg);
+                        validaDataNascimento(dataNascimento);
+                        validaTelefone(telefone);
+                        validaEndereco(endereco);
+                        validaLogin(login);
+                        validaSenha(senha);
 
         Funcionario funcionario = new Funcionario(nome, cpf, rg, dataNascimento,
                                         telefone, endereco, login, senha, cargo);
         PersistenciaDeDados.getInstance().put(funcionario);
         return funcionario;
-    }
-
-	
-    public void removeFuncionario(int index) {
-        if(index != -1) {
-
-        } else {
-                //TODO CHAMAR MODAL ERRO
-        }
     }
 	
     public Aluno cadastraAluno(String nome, String cpf, String rg, String dataNascimento,
@@ -80,14 +71,6 @@ public class GerenciadorDeCadastro {
         return aluno;	
     }
 	
-    public void removeAluno(int index) {
-            if(index != -1) {
-
-            } else {
-                //TODO CHAMAR MODAL ERRO
-            }
-    }
-	
     public Treino cadastraTreino(String nome, ArrayList<Exercicio> exercicios) throws Exception {
         validaNome(nome);
 
@@ -96,14 +79,6 @@ public class GerenciadorDeCadastro {
         PersistenciaDeDados.getInstance().put(treino);
         return treino;
     };
-        
-    public void removeTreino(int index) {
-        if(index != -1) {
-
-        } else {
-        //TODO CHAMAR MODAL ERRO
-        }
-    }
     
      /**   
     VALIDAÇÕES
