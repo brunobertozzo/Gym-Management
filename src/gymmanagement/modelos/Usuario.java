@@ -5,6 +5,7 @@
  */
 package gymmanagement.modelos;
 
+import gerenciadordepersistencia.PersistenciaDeDados;
 import gymmanagement.controladores.ControladorPrincipal;
 import gymmanagement.interfaces.IObjectID;
 import java.io.Serializable;
