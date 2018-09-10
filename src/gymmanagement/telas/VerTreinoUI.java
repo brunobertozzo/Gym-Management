@@ -41,7 +41,6 @@ public class VerTreinoUI extends javax.swing.JFrame {
         //aluno.getTreino().getExercicios()
         //this.treinos.get(aluno.getTreino().getExercicios())
         for (Exercicio exercicio : aluno.getTreino().getExercicios()) {
-            System.out.println(exercicio.getNome());
             modelTable2.addRow(new Object[]{
                 exercicio.getNome()
             });
@@ -70,7 +69,7 @@ public class VerTreinoUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

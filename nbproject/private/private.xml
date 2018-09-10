@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/LabTIC/Projetos/Gym-Management/src/gymmanagement/controladores/ControladorPrincipal.java</file>
-            <file>file:/C:/Users/LabTIC/Projetos/Gym-Management/src/gerenciadordepersistencia/PersistenciaDeDados.java</file>
-            <file>file:/C:/Users/LabTIC/Projetos/Gym-Management/src/gymmanagement/modelos/Usuario.java</file>
-            <file>file:/C:/Users/LabTIC/Projetos/Gym-Management/src/gymmanagement/modelos/Funcionario.java</file>
+            <file>file:/C:/Users/bruno/Documents/Projetos/Gym-Management/src/autenticacaodeusuarios/AutenticacaoDeUsuarios.java</file>
+            <file>file:/C:/Users/bruno/Documents/Projetos/Gym-Management/src/gerenciadordecadastros/GerenciadorDeCadastro.java</file>
+            <file>file:/C:/Users/bruno/Documents/Projetos/Gym-Management/src/gymmanagement/telas/MenuFuncionarioUI.java</file>
+            <file>file:/C:/Users/bruno/Documents/Projetos/Gym-Management/src/gymmanagement/telas/GerenciarAlunosUI.java</file>
+            <file>file:/C:/Users/bruno/Documents/Projetos/Gym-Management/src/gymmanagement/telas/CadastroTreinoUI.java</file>
+            <file>file:/C:/Users/bruno/Documents/Projetos/Gym-Management/src/gymmanagement/telas/VerTreinoUI.java</file>
         </group>
     </open-files>
 </project-private>

@@ -184,7 +184,7 @@ public class GerenciarAlunosUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(btnCadastrarAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(29, 29, 29)
+                            .addGap(18, 18, 18)
                             .addComponent(jButton2)
                             .addGap(18, 18, 18)
                             .addComponent(jButton1)
